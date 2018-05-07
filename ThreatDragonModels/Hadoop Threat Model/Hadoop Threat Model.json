@@ -1,6 +1,7 @@
 {
   "summary": {
-    "title": "Hadoop Threat Model"
+    "title": "Hadoop Threat Model",
+    "owner": "aqualen"
   },
   "detail": {
     "contributors": [],
@@ -8,7 +9,264 @@
       {
         "title": "hadoop overview",
         "thumbnail": "./public/content/images/thumbnail.jpg",
-        "id": 0
+        "id": 0,
+        "diagramJson": {
+          "cells": [
+            {
+              "type": "tm.Store",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 349,
+                "y": 480
+              },
+              "angle": 0,
+              "id": "b6b36c28-307f-4494-acfb-37e927a4d7ea",
+              "z": 1,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "HDFS"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Process",
+              "size": {
+                "width": 100,
+                "height": 100
+              },
+              "position": {
+                "x": 72,
+                "y": 121
+              },
+              "angle": 0,
+              "id": "008b0b23-9a07-42c7-a658-5fdaaadfbd4f",
+              "z": 2,
+              "hasOpenThreats": false,
+              "privilegeLevel": "user",
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasNoOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Client App"
+                },
+                ".element-text": {
+                  "class": "element-text hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Actor",
+              "size": {
+                "width": 160,
+                "height": 80
+              },
+              "position": {
+                "x": 366,
+                "y": 73
+              },
+              "angle": 0,
+              "id": "8360ccf8-0f70-432c-a5a3-34b7d19dd7b3",
+              "z": 3,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "title": "Denial of Service",
+                  "type": "Denial of service",
+                  "description": "It's possible for any user to overwhelm the processing capabilities, preventing other users from performing legitimate work.",
+                  "mitigation": "Throttle all users to sustainable workflow volumes."
+                }
+              ],
+              "attrs": {
+                ".element-shape": {
+                  "class": "element-shape hasOpenThreats isInScope"
+                },
+                "text": {
+                  "text": "Name Node"
+                },
+                ".element-text": {
+                  "class": "element-text hasOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "smooth": true,
+              "source": {
+                "id": "008b0b23-9a07-42c7-a658-5fdaaadfbd4f"
+              },
+              "target": {
+                "id": "8360ccf8-0f70-432c-a5a3-34b7d19dd7b3"
+              },
+              "vertices": [
+                {
+                  "x": 302,
+                  "y": 136
+                }
+              ],
+              "id": "63289083-9f2f-4965-80c7-d76b6349c484",
+              "labels": [
+                {
+                  "position": 0.5,
+                  "attrs": {
+                    "text": {
+                      "text": "Metadata Request",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 4,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Boundary",
+              "smooth": true,
+              "source": {
+                "x": 211,
+                "y": 36
+              },
+              "target": {
+                "x": 231,
+                "y": 383
+              },
+              "vertices": [
+                {
+                  "x": 254,
+                  "y": 199
+                }
+              ],
+              "id": "a8ea129e-d4fa-41c5-99de-9f87ae85c6d8",
+              "z": 5,
+              "attrs": {}
+            },
+            {
+              "type": "tm.Flow",
+              "smooth": true,
+              "source": {
+                "id": "8360ccf8-0f70-432c-a5a3-34b7d19dd7b3"
+              },
+              "target": {
+                "x": 456,
+                "y": 479
+              },
+              "vertices": [
+                {
+                  "x": 450,
+                  "y": 288
+                },
+                {
+                  "x": 453,
+                  "y": 318
+                }
+              ],
+              "id": "b939cbf0-975b-4330-ab4f-d0c4e6f6126e",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.4855455000405389,
+                    "offset": 7.378027035098057
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 7,
+              "hasOpenThreats": false,
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasNoOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasNoOpenThreats isInScope"
+                }
+              }
+            },
+            {
+              "type": "tm.Flow",
+              "smooth": true,
+              "source": {
+                "x": 152,
+                "y": 213
+              },
+              "target": {
+                "id": "b6b36c28-307f-4494-acfb-37e927a4d7ea"
+              },
+              "vertices": [
+                {
+                  "x": 281,
+                  "y": 307
+                }
+              ],
+              "id": "8c9fc740-79ac-4a81-8c14-38ab15ab8457",
+              "labels": [
+                {
+                  "position": {
+                    "distance": 0.5313516792896463,
+                    "offset": -1.1144609740877058
+                  },
+                  "attrs": {
+                    "text": {
+                      "text": "Data Access",
+                      "font-weight": "400",
+                      "font-size": "small"
+                    }
+                  }
+                }
+              ],
+              "z": 8,
+              "hasOpenThreats": true,
+              "threats": [
+                {
+                  "status": "Open",
+                  "severity": "Medium",
+                  "title": "Non-authenticated data access",
+                  "type": "Information disclosure",
+                  "description": "Access to data stored in HDFS is not adequately controlled",
+                  "mitigation": "limit access to entire Hadoop Cluster"
+                }
+              ],
+              "attrs": {
+                ".marker-target": {
+                  "class": "marker-target hasOpenThreats isInScope"
+                },
+                ".connection": {
+                  "class": "connection hasOpenThreats isInScope"
+                }
+              }
+            }
+          ]
+        },
+        "size": {
+          "height": 590,
+          "width": 790
+        }
       }
     ]
   }
